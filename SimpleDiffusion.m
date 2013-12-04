@@ -97,32 +97,6 @@ axis([xlim, ylim]);
 rectangle('Position',BOX)
 hold off;
 
-
-%=================================%
-%           3D PLOT
-%---------------------------------%
-%{
-%=================================%
-%           3D PLOT
-%---------------------------------%
-%     MAIN DOTS
-%----------------------%
-if do3DPLOT
-figure(1);
-subplot(5,5,[1 7]), 
-%gscatter(GluR2xyl(1,:),GluR2xyl(2,:)); view(20, 30);
-scatter3(GluR2xyl(1,:),GluR2xyl(2,:),G2Z(:),'.'), view(20, 30)
-axis normal;
-grid off
-axis([xlim, ylim, zlim]);
-set(gca, 'Box', 'on');
-set(gca,'xticklabel',[])
-set(gca,'yticklabel',[])
-%-------%
-%}
-% if Nt == 201; keyboard; end
-%=================================%
-
 end
 
 
