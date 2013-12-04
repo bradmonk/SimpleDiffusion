@@ -6,7 +6,7 @@ scsz = get(0,'ScreenSize');
 
 % USER ENTERED VALUES
 NSteps = 400;			% number of steps (loop time)
-Ndots = 10;				% number of particles
+Ndots = 10;			% number of particles
 Scale = 1/10;			% scale of model (life:model)
 TimeStep = 1000;		% time step (ms)
 Delay = .01;			% slow animation rate by X%
@@ -16,18 +16,18 @@ DiffRateB = 0.1;		% diffusion rate coefficient B
 
 
 % BASE DIFFUSION RATES EQUATIONS
-Sc = Scale;					% scale of model (life:model)
-t = TimeStep/1000;			% time step (ms)
-dm = 2;                     % dimensions
-Da = DiffRateA*t/Sc;		% Diffusion Rate A (D = L² / 2d*t)
-Db = DiffRateB*t/Sc;		% Diffusion Rate B
-Dr = Da/Db;					% Ratio of Da:Ds (1/Ls)^2;
-Dn = Da/Dr;					% new D after scaling L
-k = sqrt(dm*Da);			% stdev of D's step size distribution
-L = sqrt(2*dm*Da);			% average diagonal (2D) step size
-Lx = L/sqrt(2);             % average linear (1D) step size
-Ls = 1/sqrt(Dr);			% scales Lx values for Dn
-MSD = 2*dm*Da;				% mean squared displacement
+Sc = Scale;		% scale of model (life:model)
+t = TimeStep/1000;	% time step (ms)
+dm = 2;			% dimensions
+Da = DiffRateA*t/Sc;	% Diffusion Rate A (D = L² / 2d*t)
+Db = DiffRateB*t/Sc;	% Diffusion Rate B
+Dr = Da/Db;		% Ratio of Da:Ds (1/Ls)^2;
+Dn = Da/Dr;		% new D after scaling L
+k = sqrt(dm*Da);	% stdev of D's step size distribution
+L = sqrt(2*dm*Da);	% average diagonal (2D) step size
+Lx = L/sqrt(2);		% average linear (1D) step size
+Ls = 1/sqrt(Dr);	% scales Lx values for Dn
+MSD = 2*dm*Da;		% mean squared displacement
 
 
 XYZL = zeros(3,Ndots);		% XYZ particle locations
@@ -43,10 +43,8 @@ BOX = [-1 2 2 2] ./Scale;	% special area location [X Y W H]
 for Nt = 1:NSteps 
 
 	XYZS = (k * randn(3,Ndots));	% generates step sizes
-	
-	XYZL = XYZL+XYZS;				% adds step to location
-	
-	XYZLp(:,Nt) = XYZL(:,1);		% save step of first dot (for trace)
+	XYZL = XYZL+XYZS;		% adds step to location
+	XYZLp(:,Nt) = XYZL(:,1);	% save step of first dot (for trace)
 
 	% Keep everything inside enclosure  %
 	[XYZL] = ENCLOSE(Nt,XYZL,XWIDE,YHIGH,Ndots);
