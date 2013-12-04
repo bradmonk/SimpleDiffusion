@@ -39,7 +39,7 @@ YHIGH = XYZSize(2)/2;		% half X enclosure size (will double below)
 BOX = [-1 2 2 2] ./Scale;	% special area location [X Y W H]
 
 
-%===========================================%
+%===============================%
 for Nt = 1:NSteps 
 
 	XYZS = (k * randn(3,Ndots));	% generates step sizes
@@ -57,13 +57,13 @@ pause(Delay);
 if mod(Nt,100)==0;Nt 
 end;
 end % for Nt = 1:Nsteps 
-%===========================================%
-
-
 %===============================%
+
+
+
 varargout = {XYZLp}; % export traced particle location
-end
-%===============================%
+end % end main function
+%=====================================================%
 
 
 
