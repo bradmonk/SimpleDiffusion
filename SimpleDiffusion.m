@@ -67,7 +67,9 @@ end % end main function
 
 
 
-
+%-------------------------------------------%
+% Keep Particles Inside Enclosure
+%-------------------------------------------%
 function [XYZL] = ENCLOSE(Nt,XYZL,XWIDE,YHIGH,Ndots)
 
 	for j = 1:Ndots 
